@@ -1,0 +1,171 @@
+const { v4: uuidv4 } = require('uuid');
+
+// Country-City mapping
+const countryCityMap = {
+  Japan: ['Tokyo', 'Osaka', 'Kyoto', 'Yokohama', 'Nagoya'],
+  Singapore: ['Singapore City', 'Jurong', 'Woodlands', 'Tampines'],
+  India: ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Kolkata', 'Hyderabad'],
+  China: ['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Chengdu'],
+  Malaysia: ['Kuala Lumpur', 'Penang', 'Johor Bahru', 'Malacca', 'Ipoh']
+};
+
+// Mock users database
+const users = [
+  {
+    id: '1',
+    email: 'demo@smbank.com',
+    username: 'demo',
+    password: '$2a$10$X8LW4rF0YqKVpxJrGJ3jYuNF7Qn8YwGXCvKvH5N0rYrPQZkHjOZzi', // 'demo123'
+    fullName: 'Demo User',
+    balance: 125450.75,
+    role: 'admin'
+  },
+  {
+    id: '2',
+    email: 'john@smbank.com',
+    username: 'john',
+    password: '$2a$10$X8LW4rF0YqKVpxJrGJ3jYuNF7Qn8YwGXCvKvH5N0rYrPQZkHjOZzi', // 'demo123'
+    fullName: 'John Doe',
+    balance: 85230.50,
+    role: 'admin'
+  },
+  {
+    id: '3',
+    email: 'smadmin@smbank.com',
+    username: 'smadmin',
+    password: '$2a$10$vD/3uhQwxAVPZx0b9OKZUesFg2RzSEDzwcuYqX0kQsNoJmWne4p8.', // 'Smbank@1234'
+    fullName: 'SM Bank Admin',
+    balance: 500000.00,
+    role: 'admin'
+  },
+  {
+    id: '4',
+    email: 'smcust@smbank.com',
+    username: 'smcust',
+    password: '$2a$10$vD/3uhQwxAVPZx0b9OKZUesFg2RzSEDzwcuYqX0kQsNoJmWne4p8.', // 'Smbank@1234'
+    fullName: 'SM Bank Customer',
+    balance: 50000.00,
+    role: 'customer'
+  }
+];
+
+// Generate mock transactions
+const generateTransactions = () => {
+  const transactions = [];
+  const countries = Object.keys(countryCityMap);
+  const statuses = ['completed', 'pending', 'failed'];
+  const descriptions = [
+    'Online Purchase',
+    'Transfer',
+    'ATM Withdrawal',
+    'Salary Deposit',
+    'Bill Payment',
+    'Refund',
+    'International Transfer',
+    'Subscription Payment'
+  ];
+
+  // All user IDs that should have transactions
+  const userIds = ['1', '2', '3', '4'];
+  
+  // Generate 125 transactions per user (500 total)
+  let transactionCounter = 1;
+  
+  userIds.forEach(userId => {
+    for (let i = 0; i < 125; i++) {
+      const country = countries[Math.floor(Math.random() * countries.length)];
+      const cities = countryCityMap[country];
+      const city = cities[Math.floor(Math.random() * cities.length)];
+      
+      // Generate dates from last 6 months
+      const daysAgo = Math.floor(Math.random() * 180);
+      const date = new Date();
+      date.setDate(date.getDate() - daysAgo);
+
+      transactions.push({
+        id: `TXN${String(transactionCounter).padStart(6, '0')}`,
+        userId: userId,
+        date: date.toISOString().split('T')[0],
+        country: country,
+        city: city,
+        amount: (Math.random() * 10000 + 100).toFixed(2),
+        status: statuses[Math.floor(Math.random() * statuses.length)],
+        description: descriptions[Math.floor(Math.random() * descriptions.length)],
+        type: Math.random() > 0.3 ? 'debit' : 'credit'
+      });
+      
+      transactionCounter++;
+    }
+  });
+
+  return transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+};
+
+const transactions = generateTransactions();
+
+// Mock statements
+const statements = [
+  {
+    id: 'STMT001',
+    userId: '1',
+    month: '2024-12',
+    startDate: '2024-12-01',
+    endDate: '2024-12-31',
+    totalDebit: 15432.50,
+    totalCredit: 25000.00,
+    openingBalance: 120450.75,
+    closingBalance: 125450.75
+  },
+  {
+    id: 'STMT002',
+    userId: '1',
+    month: '2024-11',
+    startDate: '2024-11-01',
+    endDate: '2024-11-30',
+    totalDebit: 18234.25,
+    totalCredit: 22000.00,
+    openingBalance: 118234.00,
+    closingBalance: 120450.75
+  }
+];
+
+// Mock business info
+const businessInfo = {
+  '1': {
+    registered_name: 'SOUM Retail Holdings Pte Ltd',
+    uen: '202220990N',
+    industry: 'Cross-border eCommerce Enablement',
+    operating_hq: 'Singapore',
+    finance_lead: 'Som An',
+    operations_lead: 'Hideo Nakamura',
+    compliance: '',
+    support: 'smb@sombank.com',
+    daily_payment_limit: 'USD 1.5M',
+    refund_sla: '2 business days',
+    compliance_status: 'Green (Apr 2024 audit)',
+    license_scope: 'APAC digital payments'
+  },
+  '3': {
+    registered_name: 'SOUM Retail Holdings Pte Ltd',
+    uen: '202220990N',
+    industry: 'Cross-border eCommerce Enablement',
+    operating_hq: 'Singapore',
+    finance_lead: 'Som An',
+    operations_lead: 'Hideo Nakamura',
+    compliance: '',
+    support: 'smb@sombank.com',
+    daily_payment_limit: 'USD 1.5M',
+    refund_sla: '2 business days',
+    compliance_status: 'Green (Apr 2024 audit)',
+    license_scope: 'APAC digital payments'
+  }
+};
+
+module.exports = {
+  users,
+  transactions,
+  statements,
+  businessInfo,
+  countryCityMap
+};
+

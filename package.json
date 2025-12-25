@@ -1,0 +1,14 @@
+{
+  "name": "smbank-app",
+  "version": "2.0.0",
+  "description": "Modern banking web application with advanced filtering",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "keywords": ["banking", "react", "nodejs"],
+  "author": "",
+  "license": "ISC"
+}

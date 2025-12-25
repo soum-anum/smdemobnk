@@ -1,0 +1,168 @@
+.paynow {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.paynow-header {
+  margin-bottom: 2rem;
+}
+
+.paynow-header h1 {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.paynow-header p {
+  color: var(--gray);
+}
+
+.paynow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.payment-form {
+  position: relative;
+}
+
+.form-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  color: white;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.payment-form h3 {
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
+.input-with-validation {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-validation input {
+  flex: 1;
+  padding-right: 3rem;
+}
+
+.validation-icon {
+  position: absolute;
+  right: 1rem;
+}
+
+.validation-icon.spinning {
+  color: var(--gray);
+  animation: spin 1s linear infinite;
+}
+
+.validation-icon.success {
+  color: var(--secondary);
+}
+
+.validation-icon.error {
+  color: var(--danger);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.success-message {
+  color: var(--secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Payment Info */
+.payment-info h3 {
+  font-size: 1.25rem;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
+.info-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.info-section h4 {
+  font-size: 1rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.info-list {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.info-list li {
+  color: var(--gray);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.info-section.security {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.info-section.security h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.info-section.security p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .paynow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .paynow-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .payment-form h3 {
+    font-size: 1.25rem;
+  }
+}
+
