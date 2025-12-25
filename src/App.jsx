@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { authAPI } from './services/api';
+import authService from './services/authService';
 
 // Components
 import Layout from './components/Layout';
@@ -24,38 +24,27 @@ function App() {
   }, []);
 
   const checkAuth = async () => {
-    const token = localStorage.getItem('token');
-    
-    if (!token) {
-      setLoading(false);
-      return;
-    }
-
     try {
-      const response = await authAPI.verify();
-      if (response.data.success) {
-        setUser(response.data.user);
+      const response = await authService.verifySession();
+      if (response.success) {
+        setUser(response.data);
         setIsAuthenticated(true);
       }
     } catch (error) {
       console.error('Auth verification failed:', error);
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      authService.logout();
     } finally {
       setLoading(false);
     }
   };
 
   const handleLogin = (token, userData) => {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
     setIsAuthenticated(true);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    authService.logout();
     setUser(null);
     setIsAuthenticated(false);
   };

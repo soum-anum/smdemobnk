@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { authAPI } from '../services/api';
+import authService from '../services/authService';
 import { LogIn, Mail, Lock, AlertCircle } from 'lucide-react';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
   const [errors, setErrors] = useState({});
@@ -25,10 +25,8 @@ const Login = ({ onLogin }) => {
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email) && !formData.email.trim()) {
-      newErrors.email = 'Email or username is required';
+    if (!formData.username.trim()) {
+      newErrors.username = 'Email or username is required';
     }
 
     if (!formData.password) {
@@ -50,13 +48,13 @@ const Login = ({ onLogin }) => {
     setApiError('');
 
     try {
-      const response = await authAPI.login(formData);
+      const response = await authService.login(formData);
       
-      if (response.data.success) {
-        onLogin(response.data.token, response.data.user);
+      if (response.success) {
+        onLogin(null, response.data);
       }
     } catch (error) {
-      const message = error.response?.data?.message || 'Login failed. Please try again.';
+      const message = error.message || 'Login failed. Please try again.';
       setApiError(message);
     } finally {
       setLoading(false);
@@ -85,22 +83,22 @@ const Login = ({ onLogin }) => {
 
           <form onSubmit={handleSubmit} className="login-form">
             <div className="input-group">
-              <label htmlFor="email">
+              <label htmlFor="username">
                 <Mail size={16} />
                 Email or Username
               </label>
               <input
                 type="text"
-                id="email"
-                name="email"
-                value={formData.email}
+                id="username"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
-                className={errors.email ? 'input-error' : ''}
+                className={errors.username ? 'input-error' : ''}
                 placeholder="Enter your email or username"
                 autoComplete="username"
               />
-              {errors.email && (
-                <span className="error-message">{errors.email}</span>
+              {errors.username && (
+                <span className="error-message">{errors.username}</span>
               )}
             </div>
 

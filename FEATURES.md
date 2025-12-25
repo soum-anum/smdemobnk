@@ -1,377 +1,323 @@
-# ✨ SMBank Features Documentation
+# 🎯 SM Bank - Features Overview
 
-## Overview
-SMBank is a modern, responsive banking web application with advanced filtering capabilities and secure authentication.
+Complete list of features in the SM Bank application.
 
----
+## 🔐 Authentication System
 
-## 📱 All 6 Required Pages
+### Login Page
+- ✅ Email/username and password fields
+- ✅ Form validation with error messages
+- ✅ Loading states during authentication
+- ✅ Client-side authentication
+- ✅ Session management with localStorage
+- ✅ Auto-redirect based on user role
+- ✅ Clean, modern UI with white background
 
-### 1. Login Page ✅
-**Route:** `/login`
+### User Roles
+- **Admin**: Full access to all pages
+- **Customer**: Restricted to Pay Now page only
 
-**Features:**
-- Email/username input field
-- Password input field with validation
-- Form validation (email format, password length)
-- Authentication via API
-- JWT token generation
-- Redirects to dashboard on success
-- Demo account quick-fill button
-- Error handling with user-friendly messages
-- Responsive design
-
-**API Used:** `POST /api/auth/login`
-
-**Demo Credentials:**
-- Email: demo@smbank.com (or username: demo)
-- Password: demo123
+### Test Accounts
+| Username | Password | Role | Access |
+|----------|----------|------|--------|
+| smadmin | Smbank@1234 | Admin | All pages |
+| smcust | Smbank@1234 | Customer | Pay Now only |
+| demo@smbank.com | demo123 | Admin | All pages |
+| john@smbank.com | demo123 | Admin | All pages |
 
 ---
 
-### 2. Home / Dashboard Page ✅
-**Route:** `/dashboard`
+## 📊 Dashboard Page
 
-**Features:**
-- **Summary Cards:**
-  - Total Balance (with gradient icon)
-  - Total Transactions count
-  - Total Credits (green)
-  - Total Debits (red)
-- **Recent Activity Feed:**
-  - Last 5 transactions
-  - Shows date, description, country, city
-  - Status badges (completed, pending, failed)
-  - Amount with +/- indicators
-- Real-time data fetching
+### Summary Cards
+- **Total Balance**: Current account balance with currency formatting
+- **Total Transactions**: Count of all transactions
+- **Recent Activity**: Number of completed transactions
+
+### Recent Transactions
+- Display last 5 transactions
+- Transaction details: ID, date, amount, status
+- Status badges with color coding
+- Quick overview of account activity
+
+### Visual Design
+- Card-based layout
+- Icons for each metric
+- Responsive grid system
 - Loading states
-- Error handling
-
-**API Used:** `GET /api/dashboard`
-
-**Data Displayed:**
-- User information
-- Account balance
-- Transaction statistics
-- Recent transaction list
 
 ---
 
-### 3. Transactions Page ✅ **[KEY FEATURE]**
-**Route:** `/transactions`
+## 💳 Transactions Page
 
-**Main Features:**
+### Transaction Table
+- **Columns**:
+  - Transaction ID
+  - Date
+  - Country
+  - City
+  - Amount (formatted with $)
+  - Status (with colored badges)
 
-#### Country Filter Dropdown
-- **Options:**
-  - All Countries (default)
+### Advanced Filtering
+
+#### Country Filter
+- **Type**: Single-select dropdown
+- **Options**: 
+  - All Countries
   - Japan
   - Singapore
   - India
   - China
   - Malaysia
+- **Behavior**: Resets city filter when changed
 
-#### City Filter (Dependent Dropdown)
-- **Dynamically updates** based on selected country
-- **Disabled** until a country is selected
-- Shows hint: "Select a country first"
-
-**City Mappings:**
-```
-Japan → Tokyo, Osaka, Kyoto, Yokohama, Nagoya
-Singapore → Singapore City, Jurong, Woodlands, Tampines
-India → Mumbai, Delhi, Bangalore, Chennai, Kolkata, Hyderabad
-China → Beijing, Shanghai, Guangzhou, Shenzhen, Chengdu
-Malaysia → Kuala Lumpur, Penang, Johor Bahru, Malacca, Ipoh
-```
+#### City Filter
+- **Type**: Multi-select checklist dropdown
+- **Features**:
+  - Search functionality
+  - Checkbox selection
+  - Selected cities shown as tags
+  - Remove cities by clicking × on tags
+  - Scrollable list
+  - Dependent on country selection
+- **Cities by Country**:
+  - **Japan**: Tokyo, Osaka, Kyoto, Yokohama, Nagoya
+  - **Singapore**: Singapore City, Jurong, Woodlands, Tampines
+  - **India**: Mumbai, Delhi, Bangalore, Chennai, Kolkata, Hyderabad
+  - **China**: Beijing, Shanghai, Guangzhou, Shenzhen, Chengdu
+  - **Malaysia**: Kuala Lumpur, Penang, Johor Bahru, Malacca, Ipoh
 
 #### Date Range Filter
-- **From Date:** Date picker input
-- **To Date:** Date picker input
-- Validates that from date is before to date
+- **From Date**: Start date picker
+- **To Date**: End date picker
+- **Behavior**: Filters transactions within date range
 
-#### Action Buttons
-- **Apply Button:**
-  - Applies all selected filters
-  - Fetches filtered data from API
-  - Shows loading state while fetching
-  
-- **Clear All Button:**
-  - Resets all filters to default
-  - Reloads all transactions
-  - Disabled when no filters are active
+### Filter Actions
+- **Apply Button**: Applies all selected filters
+- **Clear Button**: Resets all filters to default
+- **Real-time Updates**: Table updates immediately
 
-#### Transactions Table
-Displays:
-- Transaction ID (monospace font)
-- Date
-- Country (with flag emoji)
-- City
-- Amount (color-coded: green for credit, red for debit)
-- Status (badge: success/warning/danger)
+### Data
+- **500 Total Transactions**: 125 per user
+- **6 Months History**: Transactions from last 180 days
+- **Random Distribution**: Countries, cities, amounts, statuses
 
-**APIs Used:**
-- `GET /api/transactions` - Fetch transactions with filters
-- `GET /api/transactions/meta/locations` - Get country-city mappings
-
-**Filter Behavior:**
-- Client-side and server-side filtering
-- Active filter count badge
-- Real-time filter updates
-- Maintains filter state
+### Status Types
+- ✅ **Completed**: Green badge
+- ⏳ **Pending**: Yellow badge
+- ❌ **Failed**: Red badge
 
 ---
 
-### 4. Statements Page ✅
-**Route:** `/statements`
+## 📄 Statements Page
 
-**Features:**
-- **Monthly Statements List:**
-  - Pre-generated monthly statements
-  - Click to view details
-  - Active statement highlighting
-  
-- **Custom Statement Generation:**
-  - Start date picker
-  - End date picker
-  - Generate button
-  - Custom date range validation
+### Statement List
+- Monthly statements for last 6 months
+- Statement period display
+- View button for each statement
 
-- **Statement Details View:**
-  - Period information
-  - Opening/Closing balance
-  - Total credits/debits
-  - Net amount
-  - Full transaction list for period
-  
-- **Download Functionality:**
-  - Export to CSV format
-  - Includes all transaction details
-  - Automatic file naming
+### Statement Details
+When a statement is selected:
 
-**APIs Used:**
-- `GET /api/statements` - Get all statements
-- `GET /api/statements/:id` - Get specific statement
-- `POST /api/statements/generate` - Generate custom statement
+#### Account Information
+- **Account**: SM Bank Account
+- **Statement Period**: Month and year
 
-**Data Shown:**
-- Statement summary statistics
-- Transaction breakdown
-- Balance information
-- Downloadable reports
+#### Financial Summary
+- **Starting Balance**: Balance at start of period
+- **Credits**: Total incoming transactions
+- **Debits**: Total outgoing transactions
+- **Ending Balance**: Balance at end of period
+
+#### Transaction History
+- All transactions for the statement period
+- Same columns as Transactions page
+- Filtered by date range
+
+### Download Feature
+- **Export as CSV**: Download statement data
+- **Filename**: `statement_[startDate]_[endDate].csv`
+- **Includes**: All transaction details
+
+### Visual Design
+- Two-column layout
+- Statement list on left
+- Details on right
+- Color-coded balance information
 
 ---
 
-### 5. Pay Now Page ✅
-**Route:** `/paynow`
+## 💸 Pay Now Page
 
-**Features:**
-- **Payment Form:**
-  - Recipient input (email/username)
-  - Amount input (number with validation)
-  - Description textarea
-  
-- **Real-time Recipient Validation:**
-  - Validates on blur
-  - Shows loading spinner while validating
-  - Green checkmark for valid recipient
-  - Red X for invalid recipient
-  - Displays recipient name when found
-  
-- **Form Validation:**
-  - Required field validation
-  - Amount must be > 0
-  - Email format validation
-  
-- **Payment Processing:**
-  - Submit button disabled until valid
-  - Loading state during processing
-  - Success message on completion
-  - Error handling with messages
-  - Form reset after success
+### Payment Form
 
-- **Information Panel:**
-  - How it works guide
-  - Important notes
-  - Security information
-  
-**APIs Used:**
-- `POST /api/payment` - Process payment
-- `POST /api/payment/validate` - Validate recipient
+#### Fields
+1. **Recipient**
+   - Text input
+   - Required field
+   - Validation on blur
 
-**Validation States:**
-- Loading (spinner)
-- Valid (green check + recipient name)
-- Invalid (red X + error message)
+2. **Amount**
+   - Number input
+   - Must be greater than 0
+   - Currency formatted
+
+3. **Description**
+   - Text area
+   - Required field
+   - Purpose of payment
+
+### Features
+- **Recipient Validation**: Verify recipient before payment
+- **Form Validation**: All fields required
+- **Loading States**: During validation and submission
+- **Success Messages**: Payment confirmation
+- **Error Handling**: Clear error messages
+- **Form Reset**: Clears after successful payment
+
+### Payment Flow
+1. Enter recipient → Validate
+2. Enter amount and description
+3. Submit payment
+4. Show success/failure message
+5. Reset form on success
 
 ---
 
-### 6. Business Information Page ✅
-**Route:** `/business`
+## 🏢 Business Information Page
 
-**Features:**
-- **Business Details Form:**
-  - Business Name (required)
-  - Business Type (dropdown)
-  - Business Address (textarea)
-  - Contact Email
-  - Contact Phone
-  - Tax ID
-  - Registration Number
-  - Established Date
+### Three-Card Layout
 
-- **Form Management:**
-  - Auto-load existing data
-  - Track changes (dirty state)
-  - Save button (disabled if no changes)
-  - Reset button
-  - Loading states
-  
-- **Information Sidebar:**
-  - Benefits of providing info
-  - Account summary
-  - Current business details
-  
-- **Validation:**
-  - Required fields
-  - Email format validation
-  - Phone format validation
-  - Success/error messages
+#### Card 1: Entity
+- **Registered Name**: Company legal name
+- **UEN**: Unique Entity Number
+- **Industry**: Business sector
+- **Operating HQ**: Headquarters location
 
-**APIs Used:**
-- `GET /api/business` - Get business information
-- `PUT /api/business` - Update business information
+#### Card 2: Team & Contacts
+- **Finance Lead**: CFO/Finance manager
+- **Operations Lead**: COO/Operations manager
+- **Compliance**: Compliance officer (if any)
+- **Support**: Support email
 
-**Form States:**
-- Loading (initial data fetch)
-- Editing (changes detected)
-- Saving (submitting data)
-- Success (saved confirmation)
-- Error (validation/server errors)
+#### Card 3: Limits & Licenses
+- **Daily Payment Limit**: Maximum daily transaction amount
+- **Refund SLA**: Refund processing time
+- **Compliance Status**: Audit status
+- **License Scope**: Operating regions
+
+### Features
+- **Read-Only Display**: No editing capabilities
+- **Professional Layout**: Clean, organized cards
+- **Responsive Design**: Works on all screen sizes
+- **Icon Headers**: Visual identification
 
 ---
 
-## 🎯 Special Features
+## 🎨 UI/UX Features
 
-### Authentication & Session
-- JWT token-based authentication
-- Automatic token verification
-- Session persistence (localStorage)
-- Auto-redirect on token expiry
-- Protected routes
+### Navigation
+- **Sidebar**: Collapsible navigation menu
+- **Active States**: Highlight current page
+- **Role-Based**: Show/hide based on user role
+- **Icons**: Lucide React icons
 
-### UI/UX Excellence
-- **Loading States:** Spinners for all async operations
-- **Form Validation:** Real-time with error messages
-- **Error Handling:** User-friendly error messages
-- **Success Feedback:** Confirmation messages
-- **Responsive Design:** Works on all screen sizes
-- **Modern UI:** Gradient accents, smooth animations
-- **Accessibility:** Proper labels, ARIA attributes
+### Responsive Design
+- **Mobile-Friendly**: Works on all devices
+- **Adaptive Layout**: Adjusts to screen size
+- **Touch-Optimized**: Easy to use on mobile
 
-### Performance
-- Fast React components
-- Optimized re-renders
-- Efficient API calls
-- Debounced inputs where needed
+### Loading States
+- **Spinners**: During data fetching
+- **Skeleton Screens**: Placeholder content
+- **Disabled States**: During form submission
 
-### Developer Experience
-- Clean code structure
-- Reusable components
-- Centralized API management
-- Consistent styling patterns
-- Well-documented code
+### Error Handling
+- **Validation Errors**: Field-level error messages
+- **API Errors**: User-friendly error alerts
+- **Empty States**: Messages when no data
+
+### Notifications
+- **Success Messages**: Green alerts with checkmark
+- **Error Messages**: Red alerts with X icon
+- **Info Messages**: Blue alerts with info icon
 
 ---
 
-## 📊 Mock Data
+## 📊 Data Management
 
-The application includes realistic mock data:
-- **Users:** 2 demo accounts
-- **Transactions:** 100 auto-generated transactions
-- **Countries:** 5 countries with multiple cities
-- **Statements:** 2 monthly statements
-- **Business Info:** Pre-configured data
+### Mock Data
+- **4 Users**: Different roles and balances
+- **500 Transactions**: Distributed across users
+- **24 Statements**: 6 months per user
+- **Business Info**: Complete company profiles
 
-All data is stored in memory and persists during the session.
+### Data Generation
+- **Random Amounts**: $100 - $10,100
+- **Random Dates**: Last 6 months
+- **Random Status**: Completed, Pending, Failed
+- **Random Locations**: 5 countries, 25+ cities
+
+### Data Persistence
+- **localStorage**: User sessions
+- **In-Memory**: Transaction and statement data
+- **Client-Side**: No backend required
 
 ---
 
 ## 🔒 Security Features
 
-1. **Password Hashing:** bcryptjs with salt
-2. **JWT Tokens:** Secure token generation
-3. **Protected Routes:** Frontend and backend protection
-4. **Input Validation:** Both client and server-side
-5. **Error Handling:** No sensitive data leakage
-6. **CORS Configuration:** Proper origin handling
+### Authentication
+- ✅ Login required for all pages
+- ✅ Session validation
+- ✅ Auto-logout on invalid session
+- ✅ Role-based access control
+
+### Data Protection
+- ⚠️ Client-side only (demo purposes)
+- ⚠️ Not suitable for production without backend
 
 ---
 
-## 🎨 Design System
+## 🚀 Performance
 
-### Colors
-- Primary: Indigo (#4f46e5)
-- Secondary: Green (#10b981)
-- Danger: Red (#ef4444)
-- Warning: Amber (#f59e0b)
-- Info: Blue (#3b82f6)
+### Optimization
+- **Code Splitting**: Lazy loading of routes
+- **Asset Optimization**: Minified JS/CSS
+- **Fast Rendering**: React 18 features
+- **Efficient Filtering**: Client-side processing
 
-### Typography
-- Font: System fonts (-apple-system, BlinkMacSystemFont, Segoe UI)
-- Headings: Bold, hierarchical sizing
-- Body: Regular weight, 1.5 line height
-
-### Components
-- Cards with shadow
-- Gradient buttons
-- Status badges
-- Form inputs with focus states
-- Responsive tables
-- Loading spinners
+### Build Size
+- **Optimized Bundle**: Vite production build
+- **Tree Shaking**: Unused code removed
+- **Compressed Assets**: Gzip compatible
 
 ---
 
-## 📱 Responsive Breakpoints
+## 📱 Browser Support
 
-- **Desktop:** > 1024px
-- **Tablet:** 768px - 1024px
-- **Mobile:** < 768px
-
-All pages are fully responsive and tested on multiple screen sizes.
-
----
-
-## ✅ Requirements Checklist
-
-### General Requirements
-- ✅ Tech stack: React + Node.js
-- ✅ Authentication with validation
-- ✅ User session handling
-- ✅ Responsive design (desktop & mobile)
-- ✅ Clear navigation between pages
-- ✅ External API usage (all pages)
-- ✅ Loading states
-- ✅ Form validation
-- ✅ Error handling
-
-### Page Requirements
-- ✅ Login Page
-- ✅ Home/Dashboard Page
-- ✅ Transactions Page with filters
-- ✅ Statements Page
-- ✅ Pay Now Page
-- ✅ Business Information Page
-
-### Special Requirements (Transactions)
-- ✅ Country dropdown (Japan, Singapore, India, China, Malaysia)
-- ✅ City dropdown (dependent on country)
-- ✅ Date range filter (From/To)
-- ✅ Apply button
-- ✅ Clear All button
-- ✅ Proper table with all columns
+- ✅ Chrome (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Edge (latest)
+- ✅ Mobile browsers
 
 ---
 
-**🎉 All requirements successfully implemented!**
+## 🎯 Future Enhancements (Potential)
 
+- [ ] Backend API integration
+- [ ] Real authentication system
+- [ ] Database persistence
+- [ ] Export to PDF
+- [ ] Transaction search
+- [ ] Multi-currency support
+- [ ] Dark mode
+- [ ] Email notifications
+- [ ] Two-factor authentication
+- [ ] Transaction analytics
+
+---
+
+**All features are fully functional and ready to use!** 🎉

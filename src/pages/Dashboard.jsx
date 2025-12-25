@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { dashboardAPI } from '../services/api';
+import dataService from '../services/dataService';
 import { 
   Wallet, 
   TrendingUp, 
@@ -21,12 +21,12 @@ const Dashboard = () => {
   const fetchDashboard = async () => {
     try {
       setLoading(true);
-      const response = await dashboardAPI.getDashboard();
-      if (response.data.success) {
-        setData(response.data.data);
+      const response = await dataService.getDashboard();
+      if (response.success) {
+        setData(response.data);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to load dashboard');
+      setError(err.message || 'Failed to load dashboard');
     } finally {
       setLoading(false);
     }

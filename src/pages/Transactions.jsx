@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { transactionsAPI } from '../services/api';
+import dataService from '../services/dataService';
 import { Filter, X, AlertCircle, Search } from 'lucide-react';
 import './Transactions.css';
 
@@ -46,9 +46,9 @@ const Transactions = () => {
 
   const fetchLocations = async () => {
     try {
-      const response = await transactionsAPI.getLocations();
-      if (response.data.success) {
-        setLocations(response.data.data);
+      const response = await dataService.getLocations();
+      if (response.success) {
+        setLocations(response.data);
       }
     } catch (err) {
       console.error('Error fetching locations:', err);
@@ -59,39 +59,15 @@ const Transactions = () => {
     try {
       setLoading(true);
       
-      // Get all transactions first
-      const response = await transactionsAPI.getTransactions({});
+      // Get all transactions with filters
+      const response = await dataService.getTransactions(filterParams);
       
-      if (response.data.success) {
-        let filteredTransactions = response.data.data.transactions;
-        
-        // Apply country filter (single-select)
-        if (filterParams.country && filterParams.country !== 'all') {
-          filteredTransactions = filteredTransactions.filter(t => 
-            t.country === filterParams.country
-          );
-        }
-        
-        // Apply cities filter (multi-select)
-        if (filterParams.cities && filterParams.cities.length > 0) {
-          filteredTransactions = filteredTransactions.filter(t => 
-            filterParams.cities.includes(t.city)
-          );
-        }
-        
-        // Apply date filters
-        if (filterParams.fromDate) {
-          filteredTransactions = filteredTransactions.filter(t => t.date >= filterParams.fromDate);
-        }
-        
-        if (filterParams.toDate) {
-          filteredTransactions = filteredTransactions.filter(t => t.date <= filterParams.toDate);
-        }
-        
-        setTransactions(filteredTransactions);
+      if (response.success) {
+        setTransactions(response.data.transactions);
       }
+      setError('');
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to load transactions');
+      setError(err.message || 'Failed to load transactions');
     } finally {
       setLoading(false);
     }

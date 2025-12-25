@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { paymentAPI } from '../services/api';
+import dataService from '../services/dataService';
 import { Send, AlertCircle, CheckCircle, Loader } from 'lucide-react';
 import './PayNow.css';
 
@@ -41,11 +41,11 @@ const PayNow = () => {
 
     try {
       setValidating(true);
-      const response = await paymentAPI.validateRecipient({ 
+      const response = await dataService.validateRecipient({ 
         recipient: formData.recipient 
       });
       
-      if (response.data.success && response.data.valid) {
+      if (response.success && response.data.valid) {
         setRecipientValid(response.data);
       }
     } catch (err) {
@@ -91,13 +91,13 @@ const PayNow = () => {
       setError('');
       setSuccess('');
 
-      const response = await paymentAPI.processPayment({
+      const response = await dataService.processPayment({
         recipient: formData.recipient,
         amount: parseFloat(formData.amount),
         description: formData.description
       });
 
-      if (response.data.success) {
+      if (response.success) {
         setSuccess(`Payment of $${formData.amount} sent successfully!`);
         // Reset form
         setFormData({
@@ -108,7 +108,7 @@ const PayNow = () => {
         setRecipientValid(null);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Payment failed. Please try again.');
+      setError(err.message || 'Payment failed. Please try again.');
     } finally {
       setLoading(false);
     }

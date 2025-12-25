@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { businessAPI } from '../services/api';
+import dataService from '../services/dataService';
 import { Building, AlertCircle, CheckCircle } from 'lucide-react';
 import './BusinessInfo.css';
 
@@ -32,10 +32,10 @@ const BusinessInfo = () => {
   const fetchBusinessInfo = async () => {
     try {
       setLoading(true);
-      const response = await businessAPI.getBusinessInfo();
+      const response = await dataService.getBusinessInfo();
       
-      if (response.data.success) {
-        const info = response.data.data;
+      if (response.success) {
+        const info = response.data;
         const data = {
           registeredName: info.registered_name || '',
           uen: info.uen || '',
@@ -53,9 +53,7 @@ const BusinessInfo = () => {
         setFormData(data);
       }
     } catch (err) {
-      if (err.response?.status !== 404) {
-        setError(err.response?.data?.message || 'Failed to load business information');
-      }
+      setError(err.message || 'Failed to load business information');
     } finally {
       setLoading(false);
     }
@@ -75,7 +73,7 @@ const BusinessInfo = () => {
       <div className="business-header">
         <div>
           <h1>Business Profile</h1>
-          <p>Snapshot of SOM Retail Holdings' treasury setup.</p>
+          <p>SOM Retail Holdings'</p>
         </div>
         <div className="business-icon">
           <Building size={40} />
@@ -103,7 +101,7 @@ const BusinessInfo = () => {
           <div className="profile-items">
             <div className="profile-item">
               <label>Registered Name:</label>
-              <span>{formData.registeredName || 'SOUM Retail Holdings Pte Ltd'}</span>
+              <span>{formData.registeredName || 'SOM Retail Holdings Pte Ltd'}</span>
             </div>
             <div className="profile-item">
               <label>UEN:</label>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { statementsAPI } from '../services/api';
+import dataService from '../services/dataService';
 import { FileText, Download, AlertCircle } from 'lucide-react';
 import './Statements.css';
 
@@ -16,12 +16,12 @@ const Statements = () => {
   const fetchStatements = async () => {
     try {
       setLoading(true);
-      const response = await statementsAPI.getStatements();
-      if (response.data.success) {
-        setStatements(response.data.data);
+      const response = await dataService.getStatements();
+      if (response.success) {
+        setStatements(response.data);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to load statements');
+      setError(err.message || 'Failed to load statements');
     } finally {
       setLoading(false);
     }
@@ -30,12 +30,12 @@ const Statements = () => {
   const handleViewStatement = async (id) => {
     try {
       setLoading(true);
-      const response = await statementsAPI.getStatement(id);
-      if (response.data.success) {
-        setSelectedStatement(response.data.data);
+      const response = await dataService.getStatement(id);
+      if (response.success) {
+        setSelectedStatement(response.data);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to load statement details');
+      setError(err.message || 'Failed to load statement details');
     } finally {
       setLoading(false);
     }

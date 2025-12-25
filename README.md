@@ -1,252 +1,223 @@
-# SMBank - Modern Banking Web Application
+# 🏦 SM Bank - Modern Banking Web Application
 
-A full-stack banking web application with advanced filtering, secure authentication, and modern UI.
+A fully client-side banking web application built with React and Vite. No backend required - perfect for GitHub Pages hosting!
 
-## 🌟 Features
+![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-### General Requirements ✅
-- ✅ Modern tech stack: React + Node.js
-- ✅ JWT Authentication with session handling
-- ✅ Fully responsive design (desktop & mobile)
-- ✅ Clear navigation between all pages
-- ✅ External API integration
-- ✅ Loading states, form validation, and error handling
+## ✨ Features
 
-### Pages Implemented
+### 🔐 Authentication
+- Secure client-side login system
+- Role-based access control (Admin/Customer)
+- Session management with localStorage
 
-#### 1. Login Page ✅
-- Email/username and password fields
-- Form validation
-- Authentication via API
-- Redirect to Dashboard on success
-- Demo account access
-
-#### 2. Home / Dashboard Page ✅
-- Summary cards (total balance, transactions, credits, debits)
+### 📊 Dashboard
+- Account balance overview
+- Total transactions summary
 - Recent activity feed
-- Fetches data from Dashboard API
-- Real-time statistics
+- Quick access cards
 
-#### 3. Transactions Page ✅ (Key Feature)
-- **Country Filter Dropdown** with countries:
-  - Japan
-  - Singapore
-  - India
-  - China
-  - Malaysia
-- **City Filter (Dependent Dropdown)**
-  - Dynamically changes based on selected country
-  - Example: Japan → Tokyo, Osaka, Kyoto
-- **Date Range Filter**
-  - From Date input
-  - To Date input
-- **Action Buttons**
-  - Apply button to apply all filters
-  - Clear All button to reset filters
-- Complete transactions table with:
-  - Transaction ID
-  - Date
-  - Country
-  - City
-  - Amount
-  - Status
+### 💳 Transactions
+- View all transactions (500+ dummy records)
+- Advanced filtering:
+  - **Country Filter**: Single-select dropdown
+  - **City Filter**: Multi-select checklist with search
+  - **Date Range Filter**: From/To date pickers
+- Real-time filter application
+- Status badges (Completed/Pending/Failed)
 
-#### 4. Statements Page ✅
-- Monthly statements view
-- Custom date-range statement generation
-- Download statements as CSV
-- Transaction summary
+### 📄 Statements
+- Monthly account statements
+- Statement details with:
+  - Account information
+  - Starting balance
+  - Credits & Debits
+  - Ending balance
+- Transaction history per statement
+- Download as CSV
 
-#### 5. Pay Now Page ✅
-- Payment form with recipient, amount, description
-- Real-time recipient validation
-- Success/failure messages
-- API-powered payment processing
+### 💸 Pay Now
+- Payment form with validation
+- Recipient verification
+- Amount and description fields
+- Success/failure notifications
 
-#### 6. Business Information Page ✅
-- Display and edit business details
-- Business name, address, contact info
-- Tax ID and registration number
-- Save and update via API
+### 🏢 Business Information
+- Three-card layout:
+  - **Entity**: Company details
+  - **Team & Contacts**: Personnel info
+  - **Limits & Licenses**: Compliance data
+- Read-only profile view
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
+- Node.js 18+ and npm
 
 ### Installation
 
-1. **Clone or navigate to the project directory:**
-   ```bash
-   cd /home/som/Documents/work/smbank
-   ```
-
-2. **Install backend dependencies:**
-   ```bash
-   cd backend
-   npm install
-   ```
-
-3. **Install frontend dependencies:**
-   ```bash
-   cd ../frontend
-   npm install
-   ```
-
-### Running Locally
-
-#### Start Backend Server (Terminal 1)
 ```bash
-cd backend
-npm start
-```
-Backend runs on: **http://localhost:5000**
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/smbank.git
+cd smbank
 
-#### Start Frontend Dev Server (Terminal 2)
-```bash
-cd frontend
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
-Frontend runs on: **http://localhost:3000**
 
-### Access the Application
+The application will open at **http://localhost:3000**
 
-Open your browser and go to: **http://localhost:3000**
+## 👥 Test Credentials
 
-## 🔐 Demo Account
+| Role | Username | Password | Access |
+|------|----------|----------|--------|
+| **Admin** | smadmin | Smbank@1234 | Full access to all pages |
+| **Admin** | demo@smbank.com | demo123 | Full access to all pages |
+| **Customer** | smcust | Smbank@1234 | Pay Now page only |
 
-Use these credentials to login:
+## 📦 Build & Deploy
 
-- **Email/Username:** demo@smbank.com (or just "demo")
-- **Password:** demo123
+### Build for Production
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` folder.
+
+### Deploy to GitHub Pages
+
+#### Option 1: Manual Deployment
+
+```bash
+# Install gh-pages
+npm install --save-dev gh-pages
+
+# Deploy
+npm run deploy
+```
+
+#### Option 2: Automatic Deployment (GitHub Actions)
+
+The repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages on every push to `main`.
+
+**Setup Steps:**
+
+1. **Push your code to GitHub:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/YOUR_USERNAME/smbank.git
+   git push -u origin main
+   ```
+
+2. **Enable GitHub Pages:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under **Source**, select **GitHub Actions**
+
+3. **The workflow will automatically:**
+   - Build your application
+   - Deploy to GitHub Pages
+   - Your site will be live at: `https://YOUR_USERNAME.github.io/smbank/`
+
+## 🛠️ Technology Stack
+
+- **Frontend Framework**: React 18.2.0
+- **Build Tool**: Vite 5.0.8
+- **Routing**: React Router DOM 6.20.0
+- **Icons**: Lucide React 0.294.0
+- **Styling**: Pure CSS (no frameworks)
+- **Data**: Client-side mock data
 
 ## 📁 Project Structure
 
 ```
 smbank/
-├── backend/                    # Node.js Backend
-│   ├── data/
-│   │   └── mockData.js        # Mock database with 100 transactions
-│   ├── middleware/
-│   │   └── auth.js            # JWT authentication middleware
-│   ├── routes/
-│   │   ├── auth.js            # Login/authentication routes
-│   │   ├── dashboard.js       # Dashboard API
-│   │   ├── transactions.js    # Transactions + locations API
-│   │   ├── statements.js      # Statements API
-│   │   ├── payment.js         # Payment processing API
-│   │   └── business.js        # Business info API
-│   ├── server.js              # Express server entry point
-│   └── package.json
-│
-├── frontend/                   # React Frontend
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Layout.jsx     # Main layout with sidebar
-│   │   │   ├── Layout.css
-│   │   │   └── PrivateRoute.jsx
-│   │   ├── pages/
-│   │   │   ├── Login.jsx      # Login page
-│   │   │   ├── Dashboard.jsx  # Dashboard/Home page
-│   │   │   ├── Transactions.jsx  # Transactions with filters
-│   │   │   ├── Statements.jsx # Statements page
-│   │   │   ├── PayNow.jsx     # Payment page
-│   │   │   ├── BusinessInfo.jsx  # Business info page
-│   │   │   └── *.css          # Page styles
-│   │   ├── services/
-│   │   │   └── api.js         # API configuration & methods
-│   │   ├── App.jsx            # Main app component
-│   │   ├── main.jsx           # Entry point
-│   │   └── index.css          # Global styles
-│   ├── index.html
-│   ├── vite.config.js
-│   └── package.json
-│
-└── README.md
+├── public/              # Static assets
+│   └── .nojekyll       # GitHub Pages config
+├── src/
+│   ├── components/      # Reusable components
+│   │   ├── Layout.jsx
+│   │   └── PrivateRoute.jsx
+│   ├── data/           # Mock data
+│   │   └── mockData.js
+│   ├── pages/          # Page components
+│   │   ├── Login.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Transactions.jsx
+│   │   ├── Statements.jsx
+│   │   ├── PayNow.jsx
+│   │   └── BusinessInfo.jsx
+│   ├── services/       # Business logic
+│   │   ├── authService.js
+│   │   └── dataService.js
+│   ├── App.jsx         # Main app component
+│   ├── main.jsx        # Entry point
+│   └── index.css       # Global styles
+├── .github/
+│   └── workflows/
+│       └── deploy.yml  # GitHub Actions workflow
+├── vite.config.js      # Vite configuration
+├── package.json        # Dependencies & scripts
+└── README.md          # This file
 ```
 
-## 🎯 Key Features Highlight
+## 🎨 Features Breakdown
 
-### Country-City Dependent Filtering
-The Transactions page implements a sophisticated filtering system:
+### Mock Data
+- **4 Users**: 2 Admins, 1 Customer, 1 Demo
+- **500 Transactions**: 125 per user
+- **24 Statements**: 6 months per user
+- **5 Countries**: Japan, Singapore, India, China, Malaysia
+- **25+ Cities**: Distributed across countries
 
-1. **Country Dropdown**
-   - Select from: Japan, Singapore, India, China, Malaysia
-   - When selected, it automatically populates the city dropdown
+### Responsive Design
+- Mobile-friendly layout
+- Adaptive navigation
+- Touch-optimized controls
 
-2. **City Dropdown**
-   - Dynamically updates based on country selection
-   - Disabled until a country is selected
-   - Example mappings:
-     - Japan → Tokyo, Osaka, Kyoto, Yokohama, Nagoya
-     - Singapore → Singapore City, Jurong, Woodlands, Tampines
-     - India → Mumbai, Delhi, Bangalore, Chennai, Kolkata, Hyderabad
-     - China → Beijing, Shanghai, Guangzhou, Shenzhen, Chengdu
-     - Malaysia → Kuala Lumpur, Penang, Johor Bahru, Malacca, Ipoh
+### User Experience
+- Loading states
+- Error handling
+- Form validation
+- Success/failure notifications
+- Smooth transitions
 
-3. **Date Range Filter**
-   - From Date and To Date pickers
-   - Filter transactions by date range
+## 🔧 Configuration
 
-4. **Filter Actions**
-   - **Apply button** - Applies all selected filters
-   - **Clear All button** - Resets all filters to default
+### Vite Configuration
 
-## 🔌 API Endpoints
+The `vite.config.js` is configured for GitHub Pages:
 
-### Authentication
-- `POST /api/auth/login` - User login
-- `GET /api/auth/verify` - Verify JWT token
+```javascript
+export default defineConfig({
+  base: '/smbank/',  // Change this to your repo name
+  plugins: [react()],
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets'
+  }
+});
+```
 
-### Dashboard
-- `GET /api/dashboard` - Get dashboard summary data
+**Important**: Update the `base` path to match your GitHub repository name!
 
-### Transactions
-- `GET /api/transactions` - Get transactions (with filtering)
-  - Query params: `country`, `city`, `fromDate`, `toDate`
-- `GET /api/transactions/:id` - Get specific transaction
-- `GET /api/transactions/meta/locations` - Get country-city mappings
+## 📝 Scripts
 
-### Statements
-- `GET /api/statements` - Get all statements
-- `GET /api/statements/:id` - Get statement with transactions
-- `POST /api/statements/generate` - Generate custom statement
-
-### Payments
-- `POST /api/payment` - Process payment
-- `POST /api/payment/validate` - Validate recipient
-
-### Business
-- `GET /api/business` - Get business information
-- `PUT /api/business` - Update business information
-
-## 🎨 UI/UX Features
-
-- **Modern, clean design** with gradient accents
-- **Responsive layout** - works on desktop, tablet, and mobile
-- **Loading states** for all async operations
-- **Form validation** with error messages
-- **Success/error alerts** for user feedback
-- **Smooth animations** and transitions
-- **Accessible** form controls and navigation
-
-## 📊 Mock Data
-
-The application includes:
-- 2 demo users
-- 100 generated transactions across all countries
-- 2 monthly statements
-- Pre-configured business information
-- Realistic data for testing all features
-
-## 🔒 Security
-
-- JWT token-based authentication
-- Password hashing with bcryptjs
-- Protected API routes
-- Automatic token expiration handling
-- Secure session management
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run deploy` | Deploy to GitHub Pages |
 
 ## 🌐 Browser Support
 
@@ -255,52 +226,20 @@ The application includes:
 - Safari (latest)
 - Edge (latest)
 
-## 📝 Development
-
-### Backend Development
-```bash
-cd backend
-npm run dev  # Uses nodemon for auto-restart
-```
-
-### Frontend Development
-```bash
-cd frontend
-npm run dev  # Vite with hot module replacement
-```
-
-## 🐛 Troubleshooting
-
-### Backend won't start
-- Make sure port 5000 is available
-- Check if `.env` file exists in backend directory
-- Run `npm install` in backend directory
-
-### Frontend won't start
-- Make sure port 3000 is available
-- Run `npm install` in frontend directory
-- Ensure backend is running first
-
-### Can't login
-- Verify backend is running on port 5000
-- Check browser console for errors
-- Use demo credentials: demo@smbank.com / demo123
-
-### Filters not working
-- Make sure you click "Apply Filters" button
-- Check if backend API is responding
-- Try "Clear All" to reset filters
-
 ## 📄 License
 
-This project is for educational purposes.
+MIT License - feel free to use this project for learning or personal use.
 
-## 🎉 Enjoy!
+## 🤝 Contributing
 
-Your modern banking application is ready to run locally!
+This is a demo project, but feel free to fork and customize it for your needs!
 
-1. Start backend: `cd backend && npm start`
-2. Start frontend: `cd frontend && npm run dev`
-3. Open: http://localhost:3000
-4. Login: demo@smbank.com / demo123
+## 📧 Support
 
+For issues or questions, please open an issue on GitHub.
+
+---
+
+**Built with ❤️ using React + Vite**
+
+**Live Demo**: [https://YOUR_USERNAME.github.io/smbank/](https://YOUR_USERNAME.github.io/smbank/)
