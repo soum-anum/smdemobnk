@@ -34,7 +34,7 @@ const Layout = ({ user, onLogout }) => {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
-          <h1 className="sidebar-logo">SM Bank</h1>
+          <h1 className="sidebar-logo">SM DEMO BNK</h1>
           <button 
             className="sidebar-close" 
             onClick={() => setSidebarOpen(false)}
