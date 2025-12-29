@@ -6,6 +6,6 @@
 
 ---
 
-**Built with ❤️ using React + Vite**
 
-**Live Demo**: [https://YOUR_USERNAME.github.io/smbank/](https://YOUR_USERNAME.github.io/smbank/)
+
+**URL**: [https://soum-anum.github.io/smbank/](https://soum-anum.github.io/login)
