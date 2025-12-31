@@ -59,7 +59,7 @@ function App() {
 
   // ✅ RETURN MUST BE INSIDE App()
   return (
-    <BrowserRouter basename="/smbank">
+    <BrowserRouter basename="/smdemobnk">
       <Routes>
         <Route
           path="/login"
