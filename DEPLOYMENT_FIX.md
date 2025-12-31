@@ -2,7 +2,7 @@
 
 ## ✅ Issue Identified & Resolved
 
-Your site at **https://soum-anum.github.io/smbank/** was showing a blank page because the build needed to be regenerated with the correct base path.
+Your site at **https://soum-anum.github.io/smdemobnk/** was showing a blank page because the build needed to be regenerated with the correct base path.
 
 ---
 
@@ -11,13 +11,13 @@ Your site at **https://soum-anum.github.io/smbank/** was showing a blank page be
 ### ✅ Configuration Already Correct:
 ```javascript
 // vite.config.js
-base: '/smbank/'  // ✅ Matches your repo name
+base: '/smdemobnk/'  // ✅ Matches your repo name
 ```
 
 ### ✅ New Build Generated:
 - Build completed successfully
 - Bundle size: 212 KB (gzipped: 64.82 KB)
-- All assets properly configured for `/smbank/` path
+- All assets properly configured for `/smdemobnk/` path
 
 ---
 
@@ -26,7 +26,7 @@ base: '/smbank/'  // ✅ Matches your repo name
 Run these commands to push the new build to GitHub:
 
 ```bash
-cd /home/som/Documents/work/smbank
+cd /home/som/Documents/work/smdemobnk
 
 # Add all files including the new build
 git add .
@@ -43,7 +43,7 @@ git push origin main
 ## ⏱️ Wait for Deployment
 
 After pushing:
-1. Go to your GitHub repository: https://github.com/soum-anum/smbank
+1. Go to your GitHub repository: https://github.com/soum-anum/smdemobnk
 2. Click on **Actions** tab
 3. Wait for the workflow to complete (usually 1-2 minutes)
 4. Look for a green checkmark ✅
@@ -53,7 +53,7 @@ After pushing:
 ## 🌐 Test Your Site
 
 Once the workflow completes, visit:
-**https://soum-anum.github.io/smbank/**
+**https://soum-anum.github.io/smdemobnk/**
 
 You should now see:
 - ✅ Login page loads correctly
@@ -70,7 +70,7 @@ Once the site loads, test with:
 |----------|----------|------|
 | **smadmin** | **Smbank@1234** | Admin (Full Access) |
 | smcust | Smbank@1234 | Customer (Pay Now only) |
-| demo@smbank.com | demo123 | Admin (Full Access) |
+| demo@smdemobnk.com | demo123 | Admin (Full Access) |
 
 ---
 
@@ -90,7 +90,7 @@ Once the site loads, test with:
 3. Check that the site is published
 
 ### 4. Check Browser Console
-1. Open your site: https://soum-anum.github.io/smbank/
+1. Open your site: https://soum-anum.github.io/smdemobnk/
 2. Press **F12** to open Developer Tools
 3. Check **Console** tab for errors
 4. Check **Network** tab to see if files are loading
@@ -101,7 +101,7 @@ Once the site loads, test with:
 
 ```bash
 # Navigate to project
-cd /home/som/Documents/work/smbank
+cd /home/som/Documents/work/smdemobnk
 
 # Add changes
 git add .
@@ -113,7 +113,7 @@ git commit -m "Fix: Rebuild with correct base path for GitHub Pages"
 git push origin main
 
 # Wait 1-2 minutes for deployment
-# Then visit: https://soum-anum.github.io/smbank/
+# Then visit: https://soum-anum.github.io/smdemobnk/
 ```
 
 ---
@@ -132,7 +132,7 @@ After deployment completes, your site will:
 
 1. **Push the changes** (commands above)
 2. **Wait for deployment** (check Actions tab)
-3. **Test the site** (https://soum-anum.github.io/smbank/)
+3. **Test the site** (https://soum-anum.github.io/smdemobnk/)
 4. **Login and explore** (smadmin / Smbank@1234)
 
 ---
@@ -151,5 +151,5 @@ If the site is still blank after following these steps:
 
 **Your fix is ready! Just push to GitHub and wait for deployment.** 🚀
 
-**Site URL**: https://soum-anum.github.io/smbank/
+**Site URL**: https://soum-anum.github.io/smdemobnk/
 

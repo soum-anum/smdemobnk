@@ -22,8 +22,8 @@ Complete list of features in the SM Bank application.
 |----------|----------|------|--------|
 | smadmin | Smbank@1234 | Admin | All pages |
 | smcust | Smbank@1234 | Customer | Pay Now only |
-| demo@smbank.com | demo123 | Admin | All pages |
-| john@smbank.com | demo123 | Admin | All pages |
+| demo@smdemobnk.com | demo123 | Admin | All pages |
+| john@smdemobnk.com | demo123 | Admin | All pages |
 
 ---
 

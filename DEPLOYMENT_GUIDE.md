@@ -126,7 +126,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/smbank/',  // ⚠️ Must match your repo name
+  base: '/smdemobnk/',  // ⚠️ Must match your repo name
   server: {
     port: 3000,
     host: true
@@ -323,7 +323,7 @@ Before deploying, ensure:
 Once deployed, your SM Bank application will be live and accessible to anyone with the URL!
 
 **Example URLs:**
-- `https://username.github.io/smbank/`
+- `https://username.github.io/smdemobnk/`
 - `https://yourdomain.com` (with custom domain)
 
 ---

@@ -216,7 +216,7 @@ Just open your browser and test!
 
 1. **Change base path** in `vite.config.js`:
    ```javascript
-   base: "/smbank/",  // Change from "/" to "/smbank/"
+   base: "/smdemobnk/",  // Change from "/" to "/smdemobnk/"
    ```
 
 2. **Rebuild**:
@@ -232,10 +232,10 @@ Just open your browser and test!
    ```
 
 4. **Enable GitHub Pages**:
-   - Go to: https://github.com/soum-anum/smbank/settings/pages
+   - Go to: https://github.com/soum-anum/smdemobnk/settings/pages
    - Source: "GitHub Actions"
    - Wait 2 minutes
-   - Visit: https://soum-anum.github.io/smbank/
+   - Visit: https://soum-anum.github.io/smdemobnk/
 
 ---
 

@@ -5,7 +5,7 @@
 Your code is committed and ready to push! Here's what I've done:
 
 - ✅ Fixed router conflict (removed HashRouter)
-- ✅ Updated `vite.config.js` base path to `/smbank/`
+- ✅ Updated `vite.config.js` base path to `/smdemobnk/`
 - ✅ Created GitHub Actions workflow for auto-deployment
 - ✅ Rebuilt app with production settings
 - ✅ Committed all changes
@@ -18,7 +18,7 @@ Your code is committed and ready to push! Here's what I've done:
 Run this command to push your code:
 
 ```bash
-cd /home/som/Documents/work/smbank
+cd /home/som/Documents/work/smdemobnk
 git push origin main
 ```
 
@@ -29,7 +29,7 @@ git push origin main
 ### 📝 Don't Have a Token? Create One:
 
 1. Go to: https://github.com/settings/tokens/new
-2. **Name**: `smbank-deploy`
+2. **Name**: `smdemobnk-deploy`
 3. **Expiration**: Choose your preference (e.g., 90 days or No expiration)
 4. **Select scopes**:
    - ✅ `repo` (Full control of private repositories)
@@ -47,7 +47,7 @@ After pushing, enable GitHub Pages:
 ### Option A: Enable via Settings (Recommended)
 
 1. Go to your repository settings:
-   **https://github.com/soum-anum/smbank/settings/pages**
+   **https://github.com/soum-anum/smdemobnk/settings/pages**
 
 2. Under **"Build and deployment"**:
    - **Source**: Select **"GitHub Actions"**
@@ -64,7 +64,7 @@ Once you push with the workflow file, GitHub Pages should be automatically confi
 ## ⏱️ Step 3: Wait for Deployment
 
 1. **Monitor the deployment**:
-   https://github.com/soum-anum/smbank/actions
+   https://github.com/soum-anum/smdemobnk/actions
 
 2. You'll see a workflow running:
    - 🟡 Yellow dot = In progress
@@ -79,7 +79,7 @@ Once you push with the workflow file, GitHub Pages should be automatically confi
 
 Once deployment completes, your site will be live at:
 
-### 🌟 **https://soum-anum.github.io/smbank/**
+### 🌟 **https://soum-anum.github.io/smdemobnk/**
 
 ---
 
@@ -114,7 +114,7 @@ Try logging in with these credentials:
 ### Issue 3: Workflow Failed
 
 **Solution**:
-1. Go to: https://github.com/soum-anum/smbank/actions
+1. Go to: https://github.com/soum-anum/smdemobnk/actions
 2. Click on the failed workflow
 3. Look at the logs to see what went wrong
 4. Common fixes:
@@ -124,7 +124,7 @@ Try logging in with these credentials:
 
 ### Issue 4: 404 Errors on Assets
 
-**Solution**: Already fixed! The `vite.config.js` has the correct base path `/smbank/`
+**Solution**: Already fixed! The `vite.config.js` has the correct base path `/smdemobnk/`
 
 ---
 
@@ -139,7 +139,7 @@ Whenever you make changes to your code:
 npm run dev
 # Test at http://localhost:3000/
 
-# 3. Change base back to "/smbank/" for deployment
+# 3. Change base back to "/smdemobnk/" for deployment
 
 # 4. Rebuild
 npm run build
@@ -163,7 +163,7 @@ git push origin main
    - Runs `npm run build`
    - Deploys the `dist/` folder to GitHub Pages
 
-2. **Your site goes live** at: https://soum-anum.github.io/smbank/
+2. **Your site goes live** at: https://soum-anum.github.io/smdemobnk/
 
 3. **No manual steps needed** - fully automated!
 
@@ -190,12 +190,12 @@ Your live site will have:
 
 ```bash
 # Push to GitHub
-cd /home/som/Documents/work/smbank
+cd /home/som/Documents/work/smdemobnk
 git push origin main
 
 # Then visit:
-# 1. https://github.com/soum-anum/smbank/actions (monitor)
-# 2. https://soum-anum.github.io/smbank/ (your live site!)
+# 1. https://github.com/soum-anum/smdemobnk/actions (monitor)
+# 2. https://soum-anum.github.io/smdemobnk/ (your live site!)
 ```
 
 ---
@@ -204,9 +204,9 @@ git push origin main
 
 If something goes wrong:
 
-1. **Check GitHub Actions logs**: https://github.com/soum-anum/smbank/actions
+1. **Check GitHub Actions logs**: https://github.com/soum-anum/smdemobnk/actions
 2. **Check browser console**: Press F12 → Console tab
-3. **Verify GitHub Pages settings**: https://github.com/soum-anum/smbank/settings/pages
+3. **Verify GitHub Pages settings**: https://github.com/soum-anum/smdemobnk/settings/pages
 4. **Make sure you pushed**: `git log --oneline -1` should show your latest commit
 
 ---
@@ -217,7 +217,7 @@ If something goes wrong:
 - [ ] GitHub Pages enabled with "GitHub Actions" source
 - [ ] Workflow completed successfully (green checkmark)
 - [ ] Waited 1-2 minutes after deployment
-- [ ] Visited https://soum-anum.github.io/smbank/
+- [ ] Visited https://soum-anum.github.io/smdemobnk/
 - [ ] Cleared browser cache and hard refreshed
 - [ ] Tested login with credentials
 - [ ] All pages working correctly
@@ -228,5 +228,5 @@ If something goes wrong:
 
 Just run `git push origin main` and your site will be live in 2 minutes!
 
-**Live URL**: https://soum-anum.github.io/smbank/ 🎉
+**Live URL**: https://soum-anum.github.io/smdemobnk/ 🎉
 

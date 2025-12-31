@@ -11,7 +11,7 @@ export const countryCityMap = {
 export const users = [
   {
     id: '1',
-    email: 'demo@smbank.com',
+    email: 'demo@smdemobnk.com',
     username: 'demo',
     password: 'demo123',
     fullName: 'Demo User',
@@ -20,7 +20,7 @@ export const users = [
   },
   {
     id: '2',
-    email: 'john@smbank.com',
+    email: 'john@smdemobnk.com',
     username: 'john',
     password: 'demo123',
     fullName: 'John Doe',
@@ -29,7 +29,7 @@ export const users = [
   },
   {
     id: '3',
-    email: 'smadmin@smbank.com',
+    email: 'smadmin@smdemobnk.com',
     username: 'smadmin',
     password: 'Smbank@1234',
     fullName: 'SM Bank Admin',
@@ -38,7 +38,7 @@ export const users = [
   },
   {
     id: '4',
-    email: 'smcust@smbank.com',
+    email: 'smcust@smdemobnk.com',
     username: 'smcust',
     password: 'Smbank@1234',
     fullName: 'SM Bank Customer',

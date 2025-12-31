@@ -9,7 +9,7 @@ All unnecessary files have been removed. Your project is now clean and ready for
 ## 📂 Final Project Structure
 
 ```
-smbank/
+smdemobnk/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions auto-deployment

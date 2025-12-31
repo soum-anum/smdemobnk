@@ -13,9 +13,9 @@ export default defineConfig({
 });
 ```
 
-**Example**: If your repo is `github.com/username/smbank`, use:
+**Example**: If your repo is `github.com/username/smdemobnk`, use:
 ```javascript
-base: '/smbank/'
+base: '/smdemobnk/'
 ```
 
 ---
@@ -23,7 +23,7 @@ base: '/smbank/'
 ### 2️⃣ Create GitHub Repository
 
 1. Go to https://github.com/new
-2. Repository name: `smbank` (or your choice)
+2. Repository name: `smdemobnk` (or your choice)
 3. Make it **Public**
 4. **Don't** initialize with README (we already have one)
 5. Click **Create repository**
@@ -36,7 +36,7 @@ Run these commands in your terminal:
 
 ```bash
 # Navigate to project
-cd /home/som/Documents/work/smbank
+cd /home/som/Documents/work/smdemobnk
 
 # Initialize git (if not already done)
 git init
@@ -86,7 +86,7 @@ Your site will be live at:
 https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
 ```
 
-**Example**: `https://johndoe.github.io/smbank/`
+**Example**: `https://johndoe.github.io/smdemobnk/`
 
 ---
 
